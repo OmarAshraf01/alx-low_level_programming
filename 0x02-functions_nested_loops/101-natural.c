@@ -1,51 +1,54 @@
 #include "main.h"
 
 /**
- * print_times_table - prints times table
- * @n : times table to use
- * Return:void
+ * print_tabsum - prints the sum of all multiples of 3 or 5
+ * below 1024 (excluded) using tabs instead of spaces
  */
-
-void print_times_table(int n)
+void print_tabsum(void)
 {
+    int sum = 0;
+    int i;
+    for (i = 0; i < 1024; i++) {
+        if (i % 3 == 0 || i % 5 == 0) {
+            sum += i;
+        }
+    }
 
-int a = 0, rep, b;
+    /* Print the sum using tabs instead of spaces */
+    if (sum == 0) {
+        _putchar('0');
+    } else {
+        int digits = 0;
+        int temp = sum;
+        while (temp > 0) {
+            digits++;
+            temp /= 10;
+        }
 
-if (n < 0 || n > 15)
-	return;
+        int tabs_needed = digits / 4;
+        int spaces_needed = digits % 4;
 
-while (a <= n)
-{
-	for (b = 0; b <= n; b++)
-	{
-		rep = a * b;
-		if (b == 0)
-			_putchar('0' + rep);
-		else if (rep < 10)
-		{
-			_putchar(' ');
-			_putchar(' ');
-			_putchar('0' + rep);
-		}
-		else if (rep < 100)
-		{
-			_putchar(' ');
-			_putchar('0' + rep / 10);
-			_putchar('0' + rep % 10);
-		}
-		else
-		{
-			_putchar('0' + rep / 100);
-			_putchar('0' + (rep - 100) / 10);
-			_putchar('0' + rep % 10);
-		}
-		if (b < n)
-		{
-			_putchar(',');
-			_putchar(' ');
-		}
-	}
-	_putchar('\n');
-	a++;
-}
+        int j;
+        for (j = 0; j < tabs_needed; j++) {
+            _putchar('\t');
+        }
+        for (j = 0; j < spaces_needed; j++) {
+            _putchar(' ');
+        }
+
+        /* Print the sum as a string */
+        char str[digits+1];
+        temp = sum;
+        str[digits] = '\0';
+        while (temp > 0) {
+            str[--digits] = temp % 10 + '0';
+            temp /= 10;
+        }
+        int k;
+        for (k = 0; k < digits; k++) {
+            _putchar(str[k]);
+        }
+    }
+
+    _putchar('\n');
 }
