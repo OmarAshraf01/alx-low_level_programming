@@ -8,5 +8,6 @@
 /* function prototypes */
 int _putchar(char c);
 int _atoi(char *s);
+int is_digit(char *s);
 
 #endif /* MAIN_H */
