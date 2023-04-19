@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stddef.h>
 #include "3-calc.h"
 
 /**
@@ -27,6 +31,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(99);
 	}
+
 	if ((*argv[2] == '/' || *argv[2] == '%') && num2 == 0)
 	{
 		printf("Error\n");
