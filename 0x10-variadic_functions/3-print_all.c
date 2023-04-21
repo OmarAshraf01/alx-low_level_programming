@@ -54,9 +54,9 @@ void printf_string(va_list list)
 		printf("%s", str);
 		return;
 	}
-
 	printf("(nil)");
 }
+
 
 /**
  * print_all - prints various types given a format string for the arguments
@@ -75,7 +75,6 @@ void print_all(const char * const format, ...)
 
 	ptr = format;
 	va_start(list, format);
-
 	while (format != NULL && *ptr)
 	{
 		if (key[keyind].spec == *ptr)
@@ -87,12 +86,11 @@ void print_all(const char * const format, ...)
 			ptr++;
 			keyind = -1;
 		}
-
 		keyind++;
 		ptr += keyind / 4;
 		keyind %= 4;
 	}
-
 	printf("\n");
+
 	va_end(list);
 }
